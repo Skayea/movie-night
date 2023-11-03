@@ -143,7 +143,7 @@ const Register = () => {
               </div>
             </div>
           ) : (
-            <div>{username}</div>
+            <div>Добро пожаловать, {username}!</div>
           )}
 
           {message && (

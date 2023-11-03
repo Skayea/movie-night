@@ -17,8 +17,8 @@ const Movies = () => {
         <ul>
           {data.map((item) => {
             return (
-              <li key={item.id}>
-                <Movie data={item} />
+              <li key={item.id} style={{margin: "20px", listStyleType: 'none'}}>
+                <Movie data={item}/>
               </li>
             );
           })}

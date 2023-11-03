@@ -19,9 +19,9 @@ const Details = () => {
   return (
     <div>
       {data ? (
-        <>
-          <div className="card card-container">
-            <div>{data.title}</div>
+        <div className='two-columns-container'>
+          <div className="card chat-container">
+            <h4>{data.title}</h4>
             <img src={data.img} alt="profile-img" className="profile-img-card" />
             <div>{data.description}</div>
             <button
@@ -35,7 +35,7 @@ const Details = () => {
           <div className="card card-container">
             <Chat   UserName={UserName} MovieId={movieId}/>
           </div>
-        </>
+        </div>
       ) : (
         <div>{data}</div>
       )}

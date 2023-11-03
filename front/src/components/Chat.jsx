@@ -41,7 +41,6 @@ const Chat = (props) => {
                 })}
             </div>
             <div className="form-group">
-                <label></label>
                 <input
                     type="text"
                     className="form-control"

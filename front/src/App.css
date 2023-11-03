@@ -36,11 +36,22 @@ label {
 }
 
 .ChatStyling{
-  width: 15vw;
-  height: 35vw;
+  width: 270px;
   background-color: rgba(0, 0, 0, 0.355);
   position: relative;
   top: 0.5vw;
+  margin-bottom: 20px;
   border: 0.1vw solid rgb(0, 127, 147);
   overflow-y: auto;
+}
+
+.chat-container.card {
+  max-width: 350px !important;
+  padding: 40px 40px;
+}
+
+.two-columns-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
