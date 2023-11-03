@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Chat from './Chat';
-import { useLocalStorage } from '../hook/useLocalStorage';
 
 const Details = () => {
   const params = useParams();

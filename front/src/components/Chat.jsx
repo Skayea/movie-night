@@ -15,15 +15,11 @@ const Chat = (props) => {
 
     const HandleButton = () => {
         const TrimValue = Value.trim();
-        //Если пользователь вошел в аккаунт =>
         if (props.UserName && Value !== "" && TrimValue !== "") {
-            //Добавляем новое сообщение из input и имя пользователя и =>
-            const massage = getMassages(props.MovieId)
-            Massage[props.MovieId] = [...massage, `${props.UserName}: ${Value}`]
-            SetMassage(Massage)
-            console.log('HandleButton')
-        console.log(Massage)
-            //Очищаем поле ввода
+            const massages = getMassages(props.MovieId)
+            const massage = JSON.parse(JSON.stringify(Massage));
+            massage[props.MovieId] = [...massages, `${props.UserName}: ${Value}`]
+            SetMassage(massage)
             SetValue("")
         }
     };
