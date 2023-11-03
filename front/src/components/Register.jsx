@@ -1,27 +1,11 @@
 import { useState } from 'react';
-import { useLocalStorage } from '../hook/useLocalStorage';
 
-const emptyCurrentUser = {
-  username: '',
-  password: '',
-  email: '',
-};
-
-const Register = () => {
-  const [currentUser, setCurrentUser] = useLocalStorage(
-    'USER-INFO',
-    emptyCurrentUser
-  );
-
+const Register = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
   const [message, setMessage] = useState('');
-
-  const checkCurrentUser = () => {
-    return currentUser && currentUser.username !== '';
-  };
 
   const checkUsername = (value) => {
     if (!value) {
@@ -89,7 +73,7 @@ const Register = () => {
         password: password,
         email: email,
       };
-      setCurrentUser(newCurrentUser);
+      props.SetCurrentUser(newCurrentUser);
     }
   };
 
@@ -103,10 +87,10 @@ const Register = () => {
         />
 
         <form onSubmit={handleRegister}>
-          {!checkCurrentUser() ? (
+          {!props.CheckUser(props.CurrentUser) ? (
             <div>
               <div className="form-group">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username">Логин</label>
                 <input
                   type="text"
                   className="form-control"
@@ -128,7 +112,7 @@ const Register = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Пароль</label>
                 <input
                   type="password"
                   className="form-control"
@@ -139,7 +123,7 @@ const Register = () => {
               </div>
 
               <div className="form-group">
-                <button className="btn btn-primary btn-block">Sing Up</button>
+                <button className="btn btn-primary btn-block">Зарегистрироваться</button>
               </div>
             </div>
           ) : (

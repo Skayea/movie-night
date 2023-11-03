@@ -13,7 +13,7 @@ const Movies = () => {
 
   return (
     <div>
-      {data ? (
+      {data && (
         <ul>
           {data.map((item) => {
             return (
@@ -23,8 +23,6 @@ const Movies = () => {
             );
           })}
         </ul>
-      ) : (
-        <div>data</div>
       )}
     </div>
   );

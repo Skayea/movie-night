@@ -10,8 +10,21 @@ import Movies from './components/Movies';
 import { useLocalStorage } from './hook/useLocalStorage';
 import Details from './components/Details';
 
+const emptyCurrentUser = {
+  username: '',
+  password: '',
+  email: '',
+};
+
+const checkUser = (user) => {
+  return user && user.username !== '';
+};
+
 function App() {
-  const [currentUser, setCurrentUser] = useLocalStorage('USER-INFO', undefined);
+  const [currentUser, setCurrentUser] = useLocalStorage(
+    'USER-INFO',
+    emptyCurrentUser
+  );
 
   const logOut = () => {
     setCurrentUser(undefined);
@@ -26,21 +39,21 @@ function App() {
         </Link>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to={'/home'} className="nav-link">
-              Home
+            <Link to={'/'} className="nav-link">
+              Главная
             </Link>
           </li>
 
-          {currentUser ? (
+          {checkUser(currentUser) ? (
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={'/movies'} className="nav-link">
-                  Catalog
+                  Каталог
                 </Link>
               </li>
               <li className="nav-item">
                 <a href="/register" className="nav-link" onClick={logOut}>
-                  LogOut
+                  Выйти
                 </a>
               </li>
             </div>
@@ -48,7 +61,7 @@ function App() {
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={'/register'} className="nav-link">
-                  Sing Up
+                  Зарегистрироваться
                 </Link>
               </li>
             </div>
@@ -59,10 +72,9 @@ function App() {
       <div className="container mt-3">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/register" element={<Register CurrentUser={currentUser} SetCurrentUser={setCurrentUser} CheckUser={checkUser} />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/movies/:id" element={<Details />} />
+          <Route path="/movies/:id" element={<Details CurrentUser={currentUser} />} />
         </Routes>
       </div>
     </div>

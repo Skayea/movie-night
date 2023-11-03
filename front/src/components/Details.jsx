@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Chat from './Chat';
 
-const Details = () => {
+const Details = (props) => {
   const params = useParams();
   const movieId = params.id;
   const [data, setData] = useState();
@@ -14,8 +14,9 @@ const Details = () => {
       .then((json) => setData(json.data));
   }, []);
 
-  const UserName = "You"
-
+  const UserName = props.CurrentUser.username;
+  console.log(UserName)
+  console.log(props)
   return (
     <div>
       {data ? (
@@ -28,12 +29,12 @@ const Details = () => {
               className="btn btn-primary btn-block"
               onClick={() => navigate(-1)}
             >
-              Go Back
+              Вернуться в каталог
             </button>
           </div>
 
           <div className="card card-container">
-            <Chat   UserName={UserName} MovieId={movieId}/>
+            <Chat UserName={UserName} MovieId={movieId}/>
           </div>
         </div>
       ) : (

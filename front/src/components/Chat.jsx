@@ -49,7 +49,7 @@ const Chat = (props) => {
                 />
             </div>
             <div className="form-group">
-                <button className="btn btn-primary btn-block" onClick={HandleButton}>Send</button>
+                <button className="btn btn-primary btn-block" onClick={HandleButton}>Отправить</button>
             </div>
         </div>
     )
